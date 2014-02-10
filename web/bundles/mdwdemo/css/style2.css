@@ -1,0 +1,14 @@
+#contenedor2{
+width:90%; background-color: #ffffff; text-align: center; margin: 0 auto 0 auto; font-family:Verdana; }
+#header{
+width:100%; background-color: red; text-align: center; overflow:hidden; padding: 0px 0px 0px 0px; margin: 0 auto 10px auto; }
+#cuerpo2{
+width: 100%; margin: 0px auto 0px auto; background-color: #f5f5f5; overflow: hidden; }
+#leftpanel{
+float: left; width: 250px; background-color: white; font: 10pt Verdana; text-align: center; }
+#centro2{
+float: left; width: 500px; margin: 0px 0px 0px 10px; background-color: green; font: 12pt Verdana; text-align: justify; }
+#derecha2{
+margin: 0px 0px 0px 770px; background-color: #eeffff; font: 10pt Verdana; text-align: center; }
+#footer{
+background-color: brown; margin: 10px 0 0 0; padding: 0 0 0 0px; text-align:center; clear: both; font: 8pt Verdana; color: yellow; }

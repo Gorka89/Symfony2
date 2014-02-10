@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" ?><votacion title="ddd" id="ids" bColor="#FFFFFF" tColor="#9EFF6E" resultxml="http://admin.espartapp.com/modules/xmls/resultsVoting.xml" 
+				sendto="http://admin.espartapp.com/modules/resultVote.php"><option title="sss" id="0"/><option title="hhh" id="1"/></votacion>

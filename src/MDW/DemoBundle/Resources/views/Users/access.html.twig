@@ -1,0 +1,201 @@
+{% extends '::main.html.twig' %}
+
+{% block title %}Control Servicios{% endblock %}
+
+{% block stylesheets %}
+{{parent()}}
+	<link href="{{ asset('bundles/mdwdemo/css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+	<link href="{{ asset('bundles/mdwdemo/css/style2.css') }}" type="text/css" rel="stylesheet" />
+	<link href="{{ asset('bundles/mdwdemo/css/queryLoader.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+{{parent()}}
+{# añadimos la CDN de jQuery
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+ 
+	<script src="{{ asset('js/jquery.min.js') }}"></script>
+#}
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js">
+	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/mdwdemo/js/bootstrap-collapse.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/mdwdemo/js/queryLoader.js') }}"></script>
+	
+	<script type="text/javascript">
+	
+		function loadexit(){
+			var url="{{ asset('bundles/mdwdemo/modules/closesession.php') }}"
+            $.ajax({   
+                type: "POST",
+                url:url,
+                data:{recoger:"datorecibidopost"},
+                success: function(datos){       
+                    $('#content').html(datos);
+                }
+            });
+        }
+		
+		function loadsupport(){
+			var url="{{ asset('bundles/mdwdemo/modules/support.php') }}"
+            $.ajax({   
+                type: "POST",
+                url:url,
+                data:{recoger:"datorecibidopost"},
+                success: function(datos){						
+                    $('#content').html(datos);
+                }
+            });
+        }
+		
+		$(document).ready(function(){
+			$('#support').click(function(){
+					$('#supportdiv').load('{{ path('modules_list', {'id': servicesname[0]}) }}');
+			});
+		});
+		
+		
+		{% for service in services %}
+			
+			$(document).ready(function(){
+				
+						$('#id{{ service.id }}').click(function(){
+								
+								{# fuerzo la carga con la funcion loaddivs, asi que al clickar ya esta cargado
+								$("div[id='{{ service.Description }}']").load('{{ path('modules_list', {'id': 1}) }}');
+								#}
+						});
+					});
+		
+		{% endfor %}
+		
+		
+		function loaddivs(){
+		
+			{% for service in services %}
+			
+					{% if servicesname[loop.index0] == 'landing' %}
+			
+								$("div[id='{{ service.Description }}']").load('{{ path('landing_service', {'id': servicesname[loop.index0] }) }}');								
+					
+					{% elseif servicesname[loop.index0] == 'app' %}
+					
+						$("div[id='{{ service.Description }}']").load('{{ path('modules_list', {'id': modulesid[loop.index0] }) }}');
+
+						
+					{% else %}
+					
+						$("div[id='{{ service.Description }}']").load('{{ path('landing_service', {'id': servicesname[loop.index0] }) }}');
+						{#$("div[id='{{ service.Description }}']").load('{{ path('modules_list', {'id': servicesname[loop.index0] }) }}');#}
+						
+					{% endif %}
+								
+		
+			{% endfor %}
+			
+		}
+		
+		loaddivs();
+		
+
+
+		{#pre carga#}
+		$(document).ready(function() {
+
+			//alert('pre carggggaaaa');
+			$('#accordion2').on('show hide', function() {
+				$(this).css('height', 'auto');
+			});
+			$('#accordion2').collapse({ parent: true, toggle: true }); 
+			
+		});
+		
+		$('#accordion2').collapse().height('auto');
+		
+		
+	
+	</script>
+
+
+{% endblock javascripts %}
+
+{% block blockimage %}
+	<img src="{{ asset('bundles/mdwdemo/images/cabecera_formulario.png') }}"/>
+{% endblock %}
+
+{% block content %}
+
+
+<h1>Listado de Servicios</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+    </tr>
+    {% for service in services %}
+    <tr>
+        <td>{{ service.id }}</td>
+        <td>{{ service.Description }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+
+{% block leftPanel %}
+
+
+<div class="accordion" id="accordion2">
+
+{% for service in services %}
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a id="id{{ service.id }}" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{ service.id }}">
+        {{ service.Description }}
+				
+      </a>
+    </div>
+    <div id="{{ service.id }}" class="accordion-body collapse">
+      <div class="accordion-inner">
+		<div id="{{ service.Description }}"></div>
+      </div>
+    </div>
+  </div>
+  
+{% endfor %}
+  
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a id="support" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#suport">
+        <a href="#" style='cursor: pointer;' onclick="loadsupport();">LABEL_SUPPORT</a>
+      </a>
+    </div>
+    <div id="suport" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div id="supportdiv"></div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#exit">
+        <a href="./login" style='cursor: pointer;' onclick="loadexit();">LABEL_EXIT</a>
+      </a>
+    </div>
+    <div id="exit" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div id="supportexit"></div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+{% endblock %}
+
+

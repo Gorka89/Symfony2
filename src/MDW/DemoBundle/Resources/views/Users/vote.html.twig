@@ -1,0 +1,68 @@
+<script type="text/javascript" src="{{ asset('bundles/mdwdemo/js/jscolor.js') }}"></script>
+<script>
+    {#document.getElementById('external_script').src = 'js/jscolor.js';#}
+
+	function initjscolor(){
+		
+		jscolor.init();
+		
+	}
+	
+	initjscolor();
+	
+</script>
+
+<center>
+
+<form name="alta" method="get" action="{{ asset('bundles/mdwdemo/modules/voteForm.php') }}">
+
+<table border="0" width="650">
+
+	<tr>
+		<td width="250"><strong>Pregunta*:</strong></span></td>
+		<td width="400"><input name="web_question" type="text" id="web_question" size="40" value=""></td>
+		<td width="400"><input class="color" name="web_question_color" id="web_question_color"></td>
+	</tr>
+	<tr>
+		<td width="250"><strong>Opcion1:</strong></span></td>
+		<td width="400"><input name="web_option1" type="text" id="web_option1" size="40" value=""></td>
+		<td width="400"><input class="color" name="web_option1_color" id="web_option1_color"></td>
+	</tr>
+	<tr>
+		<td width="250"><strong>Opcion2:</strong></span></td>
+		<td width="400"><input name="web_option2" type="text" id="web_option2" size="40" value=""></td>
+		<td width="400"><input class="color" name="web_option2_color" id="web_option2_color"></td>
+	</tr>
+	<tr>
+		<td width="250"><strong>Opcion3:</strong></span></td>
+		<td width="400"><input name="web_option3" type="text" id="web_option3" size="40" value=""></td>
+		<td width="400"><input class="color" name="web_option3_color" id="web_option3_color"></td>
+	</tr>
+	<tr>
+		<td width="250"><strong>Opcion4:</strong></span></td>
+		<td width="400"><input name="web_option4" type="text" id="web_option4" size="40" value=""></td>
+		<td width="400"><input class="color" name="web_option4_color" id="web_option4_color"></td>
+	</tr>
+	<tr>
+		<td width="250"><strong>Opcion5:</strong></span></td>
+		<td width="400"><input name="web_option5" type="text" id="web_option5" size="40" value=""></td>
+		<td width="400"><input class="color" name="web_option5_color" id="web_option5_color"></td>
+	</tr>
+	<tr>
+		<td width="250"><strong>Opcion6:</strong></span></td>
+		<td width="400"><input name="web_option6" type="text" id="web_option6" size="40" value=""></td>
+		<td width="400"><input class="color" name="web_option6_color" id="web_option6_color"></td>
+	</tr>
+	<tr>
+		<td colspan="2"><center>
+        		<input name="web_action" type="hidden" id="web_action" value="dkv">
+        		<input name="apariencia" type="hidden" id="apariencia" value="corteingles">
+        		<input name="procedencia" type="hidden" id="procedencia" value="1">
+        		<input name="set_vote" type="submit" id="set_vote" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generar Menu Votacion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></center>
+		</td>
+	</tr>
+</table>
+					  
+</form>
+
+</center>

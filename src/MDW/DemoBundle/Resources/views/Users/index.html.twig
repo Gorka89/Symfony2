@@ -1,0 +1,71 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>
+
+	function loadstats(){
+
+			var url="{{ path(
+			  'user_edit',
+			 { 'id': 1 }
+		   )}}"
+            $.ajax({   
+                type: "POST",
+                url:url,
+                data:{recoger:"datorecibidopost"},
+                success: function(datos){						
+                    $('#content').html(datos);
+                }
+            });
+    }
+	
+	
+	
+	function loadapp(name){
+
+			var url="{{ path('module', {'name': name}) }}"
+			
+            $.ajax({   
+                type: "POST",
+                url:url,
+                data:{recoger:"datorecibidopost"},
+                success: function(datos){						
+                    $('#content').html(datos);
+                }
+            });
+    }
+	
+
+
+{% for modulename in modulesname %}
+	
+	document.getElementById("{{modulename}}").addEventListener("click", function() {
+		var url="{{ path('module', {'name': modulename}) }}"
+			
+            $.ajax({   
+                type: "POST",
+                url:url,
+                data:{recoger:"datorecibidopost"},
+                success: function(datos){						
+                    $('#content').html(datos);
+                }
+            });
+	}, false);
+	
+{% endfor %}
+	
+</script>
+
+
+
+{% for modulename in modulesname %}
+	{#
+	<a href="{{ path('module', {'name': modulename}) }}" id="{{modulename}}">
+		{{ modulename }}
+	</a><br>
+	#}
+	
+	<a id="{{modulename}}" href="#" style='cursor: pointer;'>
+		{{ modulename }}
+	</a><br>
+
+{% endfor %}
+

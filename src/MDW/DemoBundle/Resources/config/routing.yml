@@ -1,0 +1,121 @@
+mdw_demo_homepage:
+    pattern:  /hellos/{name}
+    defaults: { _controller: MDWDemoBundle:Default:index }
+
+articulos:
+  pattern: /articulos
+  defaults: { _controller: MDWDemoBundle:Default:articulos }
+
+articulo:
+  pattern: /articulo/{id}
+  defaults: { _controller: MDWDemoBundle:Default:articulo }
+
+articulo_crear:
+    pattern:  /articulos/crear
+    defaults: { _controller: MDWDemoBundle:Blog:crear }
+
+login:
+  pattern: /loginOld
+  defaults: { _controller: MDWDemoBundle:Default:login }
+
+path_hello_world:
+    pattern:  /hellol
+    defaults: { _controller: MDWDemoBundle:Default:indexx }
+
+blog_mostrar:
+    pattern:   /blog/{slug}
+    defaults:  { _controller: MDWDemoBundle:Blog:show }
+
+user_list:
+    pattern:  /user/list
+    defaults: { _controller: MDWDemoBundle:Users:list }
+
+user_create:
+    pattern:  /user/create
+    defaults: { _controller: MDWDemoBundle:Users:create }
+
+user_edit:
+    pattern:  /user/edit/{id}
+    defaults: { _controller: MDWDemoBundle:Users:edit }
+
+user_view:
+    pattern:  /user/view/{id}
+    defaults: { _controller: MDWDemoBundle:Users:view }
+
+user_delete:
+    pattern:  /user/delete/{id}
+    defaults: { _controller: MDWDemoBundle:Users:delete }
+
+user_exists:
+    pattern:  /user/exists/{id}
+    defaults: { _controller: MDWDemoBundle:Users:exists }
+
+user_login:
+ pattern: /login
+ defaults: { _controller: MDWDemoBundle:Users:login }
+ 
+user_access:
+ pattern: /access
+ defaults: { _controller: MDWDemoBundle:Users:access }
+
+show_users:
+    pattern:  /showusers
+    defaults: { _controller: MDWDemoBundle:Users:showUsers }
+
+MDWDemoBundle_noticias:
+    pattern:  /noticias
+    defaults: { _controller: MDWDemoBundle:Notice:index }
+
+MDWDemoBundle_noticeView:
+    pattern:  /leerNoticia/{notice_id}
+    defaults: { _controller: MDWDemoBundle:Notice:noticeView }
+
+modules_list:
+    pattern:  /modules/{id}
+    defaults: { _controller: MDWDemoBundle:Users:moduleslist }
+
+app_service:
+    pattern:  /app/{id}
+    defaults: { _controller: MDWDemoBundle:Users:appservice }
+
+landing_service:
+    pattern:  /landing/{id}
+    defaults: { _controller: MDWDemoBundle:Users:landingservice }
+
+load_stats:
+    pattern:  /landing/stats
+    defaults: { _controller: MDWDemoBundle:Users:loadstats }
+
+load_registers:
+    pattern:  /landing/registers/{id}
+    defaults: { _controller: MDWDemoBundle:Users:loadregisters }
+
+load_export:
+    pattern:  /landing/export/{id}
+    defaults: { _controller: MDWDemoBundle:Users:loadexport }
+
+load_pagination:
+    pattern:  /pagination
+    defaults: { _controller: MDWDemoBundle:Users:pagination }
+
+load_graphic_stats:
+    pattern:  /stats
+    defaults: { _controller: MDWDemoBundle:Users:graphicstats }
+
+export_csv:
+    pattern:  /exportcsv
+    defaults: { _controller: MDWDemoBundle:Users:exportcsv }
+
+module:
+    pattern:  /module/{name}
+    defaults: { _controller: MDWDemoBundle:Users:modulephp }
+
+traslate:
+    pattern:  /traslate
+    defaults: { _controller: MDWDemoBundle:Users:traslatetest }
+
+contact:
+    path:      /{_locale}/contact
+    defaults:  { _controller: MDWDemoBundle:Users:traslatetest, _locale: en }
+    requirements:
+        _locale: en|fr|de|es

@@ -1,0 +1,272 @@
+# skip "real" requests
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .* - [QSA,L]
+
+# _wdt
+RewriteCond %{REQUEST_URI} ^/_wdt/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_wdt,E=_ROUTING_param_token:%1,E=_ROUTING_default__controller:web_profiler.controller.profiler\:toolbarAction]
+
+# _profiler_home
+RewriteCond %{REQUEST_URI} ^/_profiler$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/_profiler/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler_home,E=_ROUTING_default__controller:web_profiler.controller.profiler\:homeAction]
+
+# _profiler_search
+RewriteCond %{REQUEST_URI} ^/_profiler/search$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler_search,E=_ROUTING_default__controller:web_profiler.controller.profiler\:searchAction]
+
+# _profiler_search_bar
+RewriteCond %{REQUEST_URI} ^/_profiler/search_bar$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler_search_bar,E=_ROUTING_default__controller:web_profiler.controller.profiler\:searchBarAction]
+
+# _profiler_purge
+RewriteCond %{REQUEST_URI} ^/_profiler/purge$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler_purge,E=_ROUTING_default__controller:web_profiler.controller.profiler\:purgeAction]
+
+# _profiler_info
+RewriteCond %{REQUEST_URI} ^/_profiler/info/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler_info,E=_ROUTING_param_about:%1,E=_ROUTING_default__controller:web_profiler.controller.profiler\:infoAction]
+
+# _profiler_import
+RewriteCond %{REQUEST_URI} ^/_profiler/import$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler_import,E=_ROUTING_default__controller:web_profiler.controller.profiler\:importAction]
+
+# _profiler_export
+RewriteCond %{REQUEST_URI} ^/_profiler/export/([^/\.]++)\.txt$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler_export,E=_ROUTING_param_token:%1,E=_ROUTING_default__controller:web_profiler.controller.profiler\:exportAction]
+
+# _profiler_phpinfo
+RewriteCond %{REQUEST_URI} ^/_profiler/phpinfo$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler_phpinfo,E=_ROUTING_default__controller:web_profiler.controller.profiler\:phpinfoAction]
+
+# _profiler_search_results
+RewriteCond %{REQUEST_URI} ^/_profiler/([^/]++)/search/results$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler_search_results,E=_ROUTING_param_token:%1,E=_ROUTING_default__controller:web_profiler.controller.profiler\:searchResultsAction]
+
+# _profiler
+RewriteCond %{REQUEST_URI} ^/_profiler/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler,E=_ROUTING_param_token:%1,E=_ROUTING_default__controller:web_profiler.controller.profiler\:panelAction]
+
+# _profiler_router
+RewriteCond %{REQUEST_URI} ^/_profiler/([^/]++)/router$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler_router,E=_ROUTING_param_token:%1,E=_ROUTING_default__controller:web_profiler.controller.router\:panelAction]
+
+# _profiler_exception
+RewriteCond %{REQUEST_URI} ^/_profiler/([^/]++)/exception$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler_exception,E=_ROUTING_param_token:%1,E=_ROUTING_default__controller:web_profiler.controller.exception\:showAction]
+
+# _profiler_exception_css
+RewriteCond %{REQUEST_URI} ^/_profiler/([^/]++)/exception\.css$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_profiler_exception_css,E=_ROUTING_param_token:%1,E=_ROUTING_default__controller:web_profiler.controller.exception\:cssAction]
+
+# _configurator_home
+RewriteCond %{REQUEST_URI} ^/_configurator$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/_configurator/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_configurator_home,E=_ROUTING_default__controller:Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController\:\:checkAction]
+
+# _configurator_step
+RewriteCond %{REQUEST_URI} ^/_configurator/step/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_configurator_step,E=_ROUTING_param_index:%1,E=_ROUTING_default__controller:Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController\:\:stepAction]
+
+# _configurator_final
+RewriteCond %{REQUEST_URI} ^/_configurator/final$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_configurator_final,E=_ROUTING_default__controller:Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController\:\:finalAction]
+
+# mdw_demo_homepage
+RewriteCond %{REQUEST_URI} ^/hellos/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:mdw_demo_homepage,E=_ROUTING_param_name:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\DefaultController\:\:indexAction]
+
+# articulos
+RewriteCond %{REQUEST_URI} ^/articulos$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:articulos,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\DefaultController\:\:articulosAction]
+
+# articulo
+RewriteCond %{REQUEST_URI} ^/articulo/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:articulo,E=_ROUTING_param_id:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\DefaultController\:\:articuloAction]
+
+# articulo_crear
+RewriteCond %{REQUEST_URI} ^/articulos/crear$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:articulo_crear,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\BlogController\:\:crearAction]
+
+# login
+RewriteCond %{REQUEST_URI} ^/loginOld$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:login,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\DefaultController\:\:loginAction]
+
+# path_hello_world
+RewriteCond %{REQUEST_URI} ^/hellol$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:path_hello_world,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\DefaultController\:\:indexxAction]
+
+# blog_mostrar
+RewriteCond %{REQUEST_URI} ^/blog/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:blog_mostrar,E=_ROUTING_param_slug:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\BlogController\:\:showAction]
+
+# user_list
+RewriteCond %{REQUEST_URI} ^/user/list$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:user_list,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:listAction]
+
+# user_create
+RewriteCond %{REQUEST_URI} ^/user/create$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:user_create,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:createAction]
+
+# user_edit
+RewriteCond %{REQUEST_URI} ^/user/edit/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:user_edit,E=_ROUTING_param_id:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:editAction]
+
+# user_view
+RewriteCond %{REQUEST_URI} ^/user/view/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:user_view,E=_ROUTING_param_id:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:viewAction]
+
+# user_delete
+RewriteCond %{REQUEST_URI} ^/user/delete/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:user_delete,E=_ROUTING_param_id:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:deleteAction]
+
+# user_exists
+RewriteCond %{REQUEST_URI} ^/user/exists/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:user_exists,E=_ROUTING_param_id:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:existsAction]
+
+# user_login
+RewriteCond %{REQUEST_URI} ^/login$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:user_login,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:loginAction]
+
+# user_access
+RewriteCond %{REQUEST_URI} ^/access$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:user_access,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:accessAction]
+
+# show_users
+RewriteCond %{REQUEST_URI} ^/showusers$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:show_users,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:showUsersAction]
+
+# MDWDemoBundle_noticias
+RewriteCond %{REQUEST_URI} ^/noticias$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:MDWDemoBundle_noticias,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\NoticeController\:\:indexAction]
+
+# MDWDemoBundle_noticeView
+RewriteCond %{REQUEST_URI} ^/leerNoticia/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:MDWDemoBundle_noticeView,E=_ROUTING_param_notice_id:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\NoticeController\:\:noticeViewAction]
+
+# modules_list
+RewriteCond %{REQUEST_URI} ^/modules/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:modules_list,E=_ROUTING_param_id:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:moduleslistAction]
+
+# app_service
+RewriteCond %{REQUEST_URI} ^/app/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:app_service,E=_ROUTING_param_id:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:appserviceAction]
+
+# landing_service
+RewriteCond %{REQUEST_URI} ^/landing/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:landing_service,E=_ROUTING_param_id:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:landingserviceAction]
+
+# load_stats
+RewriteCond %{REQUEST_URI} ^/landing/stats$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:load_stats,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:loadstatsAction]
+
+# load_registers
+RewriteCond %{REQUEST_URI} ^/landing/registers/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:load_registers,E=_ROUTING_param_id:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:loadregistersAction]
+
+# load_export
+RewriteCond %{REQUEST_URI} ^/landing/export/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:load_export,E=_ROUTING_param_id:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:loadexportAction]
+
+# load_pagination
+RewriteCond %{REQUEST_URI} ^/pagination$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:load_pagination,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:paginationAction]
+
+# load_graphic_stats
+RewriteCond %{REQUEST_URI} ^/stats$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:load_graphic_stats,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:graphicstatsAction]
+
+# export_csv
+RewriteCond %{REQUEST_URI} ^/exportcsv$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:export_csv,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:exportcsvAction]
+
+# Calendario
+RewriteCond %{REQUEST_URI} ^/exportcsv$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:Calendario,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:exportcsvAction]
+
+# module
+RewriteCond %{REQUEST_URI} ^/module/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:module,E=_ROUTING_param_name:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:modulephpAction]
+
+# traslate
+RewriteCond %{REQUEST_URI} ^/traslate$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:traslate,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:traslatetestAction]
+
+# contact
+RewriteCond %{REQUEST_URI} ^/(en|fr|de|es)/contact$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:contact,E=_ROUTING_param__locale:%1,E=_ROUTING_default__controller:MDW\\DemoBundle\\Controller\\UsersController\:\:traslatetestAction,E=_ROUTING_default__locale:en]
+
+# sonata_admin_redirect
+RewriteCond %{REQUEST_URI} ^/admin$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/admin/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:sonata_admin_redirect,E=_ROUTING_default__controller:Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController\:\:redirectAction,E=_ROUTING_default_route:sonata_admin_dashboard,E=_ROUTING_default_permanent:true]
+
+# sonata_admin_dashboard
+RewriteCond %{REQUEST_URI} ^/admin/dashboard$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:sonata_admin_dashboard,E=_ROUTING_default__controller:Sonata\\AdminBundle\\Controller\\CoreController\:\:dashboardAction]
+
+# sonata_admin_retrieve_form_element
+RewriteCond %{REQUEST_URI} ^/admin/core/get\-form\-field\-element$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:sonata_admin_retrieve_form_element,E=_ROUTING_default__controller:sonata.admin.controller.admin\:retrieveFormFieldElementAction]
+
+# sonata_admin_append_form_element
+RewriteCond %{REQUEST_URI} ^/admin/core/append\-form\-field\-element$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:sonata_admin_append_form_element,E=_ROUTING_default__controller:sonata.admin.controller.admin\:appendFormFieldElementAction]
+
+# sonata_admin_short_object_information
+RewriteCond %{REQUEST_URI} ^/admin/core/get\-short\-object\-description(?:\.(html|json))?$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:sonata_admin_short_object_information,E=_ROUTING_param__format:%1,E=_ROUTING_default__controller:sonata.admin.controller.admin\:getShortObjectDescriptionAction,E=_ROUTING_default__format:html]
+
+# sonata_admin_set_object_field_value
+RewriteCond %{REQUEST_URI} ^/admin/core/set\-object\-field\-value$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:sonata_admin_set_object_field_value,E=_ROUTING_default__controller:sonata.admin.controller.admin\:setObjectFieldValueAction]
+
+# sonata_admin_search
+RewriteCond %{REQUEST_URI} ^/admin/search$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:sonata_admin_search,E=_ROUTING_default__controller:Sonata\\AdminBundle\\Controller\\CoreController\:\:searchAction]
+
+# _welcome
+RewriteCond %{REQUEST_URI} ^/bienvenida$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_welcome,E=_ROUTING_default__controller:Acme\\DemoBundle\\Controller\\WelcomeController\:\:indexAction]
+
+# _demo_login
+RewriteCond %{REQUEST_URI} ^/demo/secured/login$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_demo_login,E=_ROUTING_default__controller:Acme\\DemoBundle\\Controller\\SecuredController\:\:loginAction]
+
+# _security_check
+RewriteCond %{REQUEST_URI} ^/demo/secured/login_check$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_security_check,E=_ROUTING_default__controller:Acme\\DemoBundle\\Controller\\SecuredController\:\:securityCheckAction]
+
+# _demo_logout
+RewriteCond %{REQUEST_URI} ^/demo/secured/logout$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_demo_logout,E=_ROUTING_default__controller:Acme\\DemoBundle\\Controller\\SecuredController\:\:logoutAction]
+
+# acme_demo_secured_hello
+RewriteCond %{REQUEST_URI} ^/demo/secured/hello$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:acme_demo_secured_hello,E=_ROUTING_default_name:World,E=_ROUTING_default__controller:Acme\\DemoBundle\\Controller\\SecuredController\:\:helloAction]
+
+# _demo_secured_hello
+RewriteCond %{REQUEST_URI} ^/demo/secured/hello/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_demo_secured_hello,E=_ROUTING_param_name:%1,E=_ROUTING_default__controller:Acme\\DemoBundle\\Controller\\SecuredController\:\:helloAction]
+
+# _demo_secured_hello_admin
+RewriteCond %{REQUEST_URI} ^/demo/secured/hello/admin/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_demo_secured_hello_admin,E=_ROUTING_param_name:%1,E=_ROUTING_default__controller:Acme\\DemoBundle\\Controller\\SecuredController\:\:helloadminAction]
+
+# _demo
+RewriteCond %{REQUEST_URI} ^/demo$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/demo/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_demo,E=_ROUTING_default__controller:Acme\\DemoBundle\\Controller\\DemoController\:\:indexAction]
+
+# _demo_hello
+RewriteCond %{REQUEST_URI} ^/demo/hello/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_demo_hello,E=_ROUTING_param_name:%1,E=_ROUTING_default__controller:Acme\\DemoBundle\\Controller\\DemoController\:\:helloAction]
+
+# _demo_contact
+RewriteCond %{REQUEST_URI} ^/demo/contact$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_demo_contact,E=_ROUTING_default__controller:Acme\\DemoBundle\\Controller\\DemoController\:\:contactAction]
+

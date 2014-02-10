@@ -1,0 +1,28 @@
+{% extends '::main.html.twig' %}
+
+{% block title %}EE{% endblock %}
+
+{% block javascripts %}
+{{parent()}}
+
+<script>
+
+		function loadRegisters(){
+			var url ="{{ asset('bundles/mdwdemo/modules/registrosweb.php') }}"
+			//var url ="{{ asset('bundles/mdwdemo/modules/intro.php') }}"
+            //var url="../modules/registrosweb.php"
+            $.ajax({   
+                type: "POST",
+                url:url,
+                data:{recoger:"datorecibidopost"},
+                success: function(datos){       
+                    $('#content').html(datos);
+                }
+            });
+        }
+		
+		loadRegisters();
+		
+</script>
+
+{% endblock javascripts %}

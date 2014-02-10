@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>SmarTwig = Twig + jQuery4PHP</title>
+  <link rel="stylesheet" type="text/css" href="{{ asset('bundles/yepsuashowcase/css/sh_style.css') }}" />
+  <script type="text/javascript" src="{{ asset('bundles/yepsuashowcase/js/sh/sh_main.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/yepsuashowcase/js/sh/sh_php.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/yepsuashowcase/js/sh/sh_caml.min.js') }}"></script>
+
+  {% include 'YepsuaSmarTwigBundle::smartwigAssets.html.twig' %}
+
+  <link rel="stylesheet" href="{{ asset('bundles/yepsuashowcase/css/showcase-style.css') }}" type="text/css" />
+
+</head>
+<body onload="sh_highlightDocument();">
+  <div class="showcase-contents">
+    <h2 class="showcase-title ui-widget-header ui-corner-all">
+      {% block showcase_title %} Welcome to SmarTwigBundle Showcase {% endblock %}
+      <div style="float: right;margin-top: -4px;">
+        {% ui_button id="btnNewWindow" icons={"primary" : "ui-icon-copy"} onclick="window.open('#','','location=no, menubar=no, scrollbars=no, status=no, toolbar=no, resizable=no');" %}
+      </div>
+      {% ui_tooltip for="#btnNewWindow" label="Show this view in another window"%}
+    </h2> 
+
+    <div class="showcase-comments">
+    {% block showcase_about_this %}
+    {% endblock %}
+    </div>
+    <div class="showcase-demo ui-widget-content ui-corner-all">
+    {% block content %}
+    {% endblock %}
+    </div>
+    {% if code is defined %}
+      <div class="showcase-demo-source">
+        <div>
+        </div>
+            {{ code|raw }}
+      </div>
+    {% endif %}
+  </div> 
+</body>

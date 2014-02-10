@@ -1,0 +1,3 @@
+{% for row in data %}
+	{{ row.id }},{{ row.Nombre }},{{ row.Email }},{{ row.fechaLead.date|date('d-m-Y H:i:s') }}
+{% endfor %}

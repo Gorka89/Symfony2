@@ -1,0 +1,20 @@
+<center><img src="{{ asset('bundles/mdwdemo/images/cabecera_formulario.png') }}" />
+
+<br><br/>
+
+<form action="{{ path('user_login') }}" method="post" {{ form_enctype(form) }}>
+	{{ form_errors(form) }}
+	
+	{{ form_row(form.login) }}
+    {#{{ form_widget(form) }}#}
+	<br/>
+	
+	{{ form_rest(form) }}
+	
+    <input type="submit" />
+</form>
+
+<form name="recover" method="post" action="recover.php">
+	<input name="recover_pass" type="submit" id="recover_pass" value="Regenerar Password">	
+</form>
+</center>

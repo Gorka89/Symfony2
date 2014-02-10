@@ -1,0 +1,44 @@
+<script> 
+	 
+		function loadvoting(){
+            var url="modules/voting.php"
+            $.ajax({   
+                type: "POST",
+                url:url,
+                data:{recoger:"datorecibidopost"},
+                success: function(datos){       
+                    $('#content').html(datos);
+					//se carga el javascript que gestiona el color de la votacion ya
+					//que AJAX no ejecuta el javascript que le viene cargado por POST
+					initjscolor();
+                }
+            });
+        }
+		
+		function load(module){
+		
+            {#var url="{{ asset('bundles/mdwdemo/modules/support.php') }}"#}
+			var url="{{ path('module', {'name': module}) }}"
+            $.ajax({   
+                type: "POST",
+                url:url,
+                data:{recoger:"datorecibidopost"},
+                success: function(datos){       
+                    $('#content').html(datos);
+					//se carga el javascript que gestiona el color de la votacion ya
+					//que AJAX no ejecuta el javascript que le viene cargado por POST
+					initjscolor();
+                }
+            });
+			
+        }
+		
+		load({{name}});
+		
+</script>
+
+
+
+
+
+Name recibido {{ name }}

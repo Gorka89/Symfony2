@@ -1,0 +1,23 @@
+{# src/MDW/DemoBundle/Resources/views/Defualt/error.html.twig #}
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/mdwdemo/css/main.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+<center>
+
+<table border="0" width="650">
+	<tr>
+		<td colspan="2"><img src="{{ asset('bundles/mdwdemo/images/cabecera_formulario.png') }}"></td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="650" colspan="2"><strong>Error al Loguear. Intentelo de nuevo mas tarde</strong></span></td>
+	</tr>
+</table>
+
+</center>
+
+

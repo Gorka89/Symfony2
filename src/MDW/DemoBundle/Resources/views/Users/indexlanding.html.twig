@@ -1,0 +1,79 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>
+
+
+	function loadstats(){
+
+			var url="{{
+			   path(
+				  'load_graphic_stats'
+			   )}}"
+            $.ajax({   
+                type: "POST",
+                url:url,
+                data:{recoger:"datorecibidopost"},
+                success: function(datos){						
+                    $('#content').html(datos);
+                }
+            });
+    }
+	
+	
+	function loadregisters(){
+	
+			var url="{{
+			   path(
+				  'load_pagination'
+			   )}}"
+            $.ajax({   
+                type: "POST",
+                url:url,
+                data:{recoger:"datorecibidopost"},
+                success: function(datos){						
+                    $('#content').html(datos);
+                }
+            });
+		
+    }
+	
+	$("#content").on("click",".pagination span a", function(){
+		$("#content").html('<img src="{{ asset('bundles/mdwdemo/images/ajax-loader.gif') }}"/>');
+		$.get($(this).attr("href"), function(data) {
+			$('#content').html(data);
+		});
+		return false;
+	});
+	
+	function loadexport(){
+			var url="{{
+			   path(
+				  'export_csv'
+			   )}}"
+            $.ajax({   
+                type: "POST",
+                url:url,
+                data:{recoger:"datorecibidopost"},
+                success: function(datos){						
+                    {# $('#content').html(datos); #}
+					$("#content").html('<img src="{{ asset('bundles/mdwdemo/images/ajax-loader.gif') }}"/>');
+					processDatar(datos);
+                }
+            });
+    }
+	
+	function processDatar(csvString){
+
+			var uriContent = "data:text/csv;charset=utf-8," + encodeURIComponent(csvString);
+			var myWindow = window.open(uriContent);
+			myWindow.focus();
+	}
+		
+
+</script>
+
+
+<a href="#" style='cursor: pointer;' onclick="loadstats();">load_stats</a><br>
+
+<a href="#" style='cursor: pointer;' onclick="loadregisters();">load_registers</a><br>
+
+<a href="#" style='cursor: pointer;' onclick="loadexport();">load_exportyehayeha</a><br>

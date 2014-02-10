@@ -1,0 +1,37 @@
+
+<center>
+
+<form name="alta" method="get" action="{{ asset('bundles/mdwdemo/forms/formularioLogin.php') }}">
+<table border="0" width="650">
+	<tr>
+		<td colspan="2">
+			<img src="{{ asset('bundles/mdwdemo/images/cabecera_formulario.png') }}" alt="logo" />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="250"><strong>Login*:</strong></span></td>
+		<td width="400"><input name="web_mail" type="text" id="web_mail" size="40" value=""></td>
+	</tr>
+	<tr>
+		<td width="250"><strong>Password*:</strong></span></td>
+		<td width="400"><input type="password" name="web_pass" type="text" id="web_pass" size="40" value=""></td>
+	</tr>
+	<tr>
+		<td colspan="2"><center>
+        		<input name="web_action" type="hidden" id="web_action" value="dkv">
+        		<input name="apariencia" type="hidden" id="apariencia" value="corteingles">
+        		<input name="procedencia" type="hidden" id="procedencia" value="1">
+        		<input name="alta_rusuario" type="submit" id="alta_usuario" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></center>
+		</td>
+	</tr>
+</table>
+					  
+</form>
+
+<form name="recover" method="post" action="recover.php">
+	<input name="recover_pass" type="submit" id="recover_pass" value="Regenerar Password">	
+</form>
+</center>
